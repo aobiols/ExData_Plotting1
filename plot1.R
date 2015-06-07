@@ -21,11 +21,6 @@ power <- read.table("household_power_consumption.txt", sep=";", header=TRUE, na.
 
 newpower <- power[(power$Date=="1/2/2007" | power$Date=="2/2/2007"),]
 
-#  We convert the strings read  to Date and Time respectively
-
-newpower$Date <- as.Date(newpower$Date, format = "%m/%d/%Y")
-newpower$Time <- strptime(newpower$Time, format = "%H:%M:%S")
-
 # We plot the histogram at the screen and in a png file named plot1.png
 
 hist(newpower$Global_active_power, main="Global Active Power", col="red", xlab="Global Active Power(Kilowatts)")
