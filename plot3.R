@@ -26,11 +26,16 @@ newpower <- power[(power$Date=="1/2/2007" | power$Date=="2/2/2007"),]
 
 newpower$Time <- strptime( paste(newpower$Time,newpower$Date), format = "%H:%M:%S %d/%m/%Y")
 
+# We set locale to English to disply day strings in English
+Sys.setlocale("LC_TIME", "English")
 
-# We plot the 3rd plot at the screen and in a png file named plot3.png
+# We plot the 3rd plot in a png file named plot3.png
 
 # we initialize the canvas for plotting
-with(newpower,plot(Time,Sub_metering_1, ylab="Energy Sub metering", xlab="", type="n"))
+
+par(mfrow=c(1,1))
+png(file="plot3.png", width=480, height=480)
+with(newpower,plot(Time,Sub_metering_1, ylab="Energy sub metering", xlab="", type="n"))
 
 # We plot sub_metering1 in black
 
@@ -48,7 +53,6 @@ with(newpower, points(Time,Sub_metering_3,col="blue", type="l"))
 
 legend("topright",col=c("black","red","blue"), legend= c("Sub_metering_1","Sub_metering_2","Sub_metering_3"), pch="________")
 
-dev.copy(png,file="plot3.png", width=480, height=480)
 dev.off()
 
 

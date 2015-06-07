@@ -27,7 +27,12 @@ newpower <- power[(power$Date=="1/2/2007" | power$Date=="2/2/2007"),]
 newpower$Time <- strptime( paste(newpower$Time,newpower$Date), format = "%H:%M:%S %d/%m/%Y")
 
 
+# We set locale to English to disply day strings in English
+Sys.setlocale("LC_TIME", "English")
+
 # We plot the 2nd plot at the screen and in a png file named plot2.png
+
+par(mfrow=c(1,1))
 
 with(newpower,plot(Time,Global_active_power, type="l", ylab="Global Active Power (Kilowatts)", xlab=""))
 dev.copy(png,file="plot2.png", width=480, height=480)

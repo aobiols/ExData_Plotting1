@@ -27,6 +27,9 @@ newpower <- power[(power$Date=="1/2/2007" | power$Date=="2/2/2007"),]
 newpower$Time <- strptime( paste(newpower$Time,newpower$Date), format = "%H:%M:%S %d/%m/%Y")
 
 
+# We set locale to English to disply day strings in English
+Sys.setlocale("LC_TIME", "English")
+
 # We plot the 4th plot in a png file named plot4.png, not in the screen 
 
 png(file="plot4.png")
